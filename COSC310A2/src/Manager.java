@@ -1,5 +1,6 @@
 import javax.swing.*;
-import javax.swing.event.ListSelectionListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Manager {
     JPanel ManagerScreen;
@@ -15,4 +16,15 @@ public class Manager {
     private JFormattedTextField thisMonthSSalesFormattedTextField;
     private JFormattedTextField recentSalesFormattedTextField;
     private JList list3;
+    private JButton logOutButton;
+
+    public Manager() {
+        logOutButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.frame.setContentPane(new Login().LoginPanel);
+                Main.frame.pack();
+            }
+        });
+    }
 }
