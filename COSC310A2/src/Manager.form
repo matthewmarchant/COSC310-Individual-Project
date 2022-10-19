@@ -26,7 +26,7 @@
             <properties/>
             <border type="none"/>
             <children>
-              <component id="a620e" class="javax.swing.JButton" binding="manageEmployeesButton" default-binding="true">
+              <component id="a620e" class="javax.swing.JButton" binding="homeButton" default-binding="true">
                 <constraints>
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -67,7 +67,7 @@
             <properties/>
             <border type="none"/>
             <children>
-              <tabbedpane id="2c553" binding="tabbedPane1" default-binding="true">
+              <tabbedpane id="2c553" binding="tabbedPane">
                 <constraints>
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
                     <preferred-size width="200" height="200"/>
@@ -84,7 +84,7 @@
                     <properties/>
                     <border type="none"/>
                     <children>
-                      <component id="f573c" class="javax.swing.JTable" binding="table1" default-binding="true">
+                      <component id="f573c" class="javax.swing.JTable" binding="InventoryTable">
                         <constraints>
                           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
                             <preferred-size width="150" height="50"/>
@@ -102,7 +102,7 @@
                     <properties/>
                     <border type="none"/>
                     <children>
-                      <component id="4b3fa" class="javax.swing.JProgressBar" binding="progressBar1" default-binding="true">
+                      <component id="4b3fa" class="javax.swing.JProgressBar" binding="SalesProgress">
                         <constraints>
                           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                         </constraints>
@@ -115,7 +115,7 @@
                           <value value="40"/>
                         </properties>
                       </component>
-                      <component id="e4876" class="javax.swing.JFormattedTextField" binding="thisMonthSSalesFormattedTextField" default-binding="true">
+                      <component id="e4876" class="javax.swing.JFormattedTextField" binding="SalesTitle">
                         <constraints>
                           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                             <preferred-size width="150" height="-1"/>
@@ -126,7 +126,7 @@
                           <text value="This Month's Sales"/>
                         </properties>
                       </component>
-                      <component id="87961" class="javax.swing.JFormattedTextField" binding="recentSalesFormattedTextField" default-binding="true">
+                      <component id="87961" class="javax.swing.JFormattedTextField" binding="RecentSalesTitle">
                         <constraints>
                           <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                             <preferred-size width="150" height="-1"/>
@@ -137,7 +137,7 @@
                           <text value="Recent Sales:"/>
                         </properties>
                       </component>
-                      <component id="7a566" class="javax.swing.JList" binding="list3" default-binding="true">
+                      <component id="7a566" class="javax.swing.JList" binding="SalesList">
                         <constraints>
                           <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
                             <preferred-size width="150" height="50"/>
@@ -145,6 +145,9 @@
                         </constraints>
                         <properties>
                           <model>
+                            <item value="//Display all orders in database"/>
+                            <item value=""/>
+                            <item value="ex."/>
                             <item value="Order # 0001 - $123.45"/>
                             <item value="Order # 0002 - $23.45"/>
                           </model>
@@ -160,7 +163,7 @@
                     <properties/>
                     <border type="none"/>
                     <children>
-                      <component id="7574b" class="javax.swing.JList" binding="list2" default-binding="true">
+                      <component id="7574b" class="javax.swing.JList" binding="OrdersList">
                         <constraints>
                           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
                             <preferred-size width="150" height="50"/>
@@ -182,7 +185,7 @@
                     <properties/>
                     <border type="none"/>
                     <children>
-                      <component id="bb08e" class="javax.swing.JList" binding="list1" default-binding="true">
+                      <component id="bb08e" class="javax.swing.JList" binding="WarningsList">
                         <constraints>
                           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
                             <preferred-size width="150" height="50"/>

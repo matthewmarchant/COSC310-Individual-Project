@@ -4,18 +4,18 @@ import java.awt.event.ActionListener;
 
 public class Manager {
     JPanel ManagerScreen;
+    private JTabbedPane tabbedPane;
+    private JTable InventoryTable; // Display Inventory Data from Database
+    private JList SalesList;
+    private JList WarningsList;
+    private JList OrdersList;
+    private JFormattedTextField SalesTitle;
+    private JFormattedTextField RecentSalesTitle;
+    private JProgressBar SalesProgress;
     private JFormattedTextField managerFormattedTextField;
-    private JButton manageEmployeesButton;
+    private JButton homeButton;
     private JButton pendingOrdersButton;
     private JButton suppliersButton;
-    private JTabbedPane tabbedPane1;
-    private JTable table1;
-    private JList list1;
-    private JList list2;
-    private JProgressBar progressBar1;
-    private JFormattedTextField thisMonthSSalesFormattedTextField;
-    private JFormattedTextField recentSalesFormattedTextField;
-    private JList list3;
     private JButton logOutButton;
 
     public Manager() {
