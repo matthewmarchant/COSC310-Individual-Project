@@ -27,7 +27,7 @@ public class Cashier {
     private JTextField PaidDisplay;
     private JButton addPaymentButton;
     private JTextPane ItemDisplay;
-    private JFormattedTextField itemListFormattedTextField;
+    private JFormattedTextField newSaleFormattedTextField;
     private JFormattedTextField ErrorDisplay;
     private JTextField AmountDue;
     private JTextField AmountDueField;
@@ -37,6 +37,7 @@ public class Cashier {
         final int[] i = {1};
         final double[] ordertotal = {0};
         final double[] paymenttotal = {0};
+        final double[] AmountDue = {0};
         a1Button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -112,10 +113,12 @@ public class Cashier {
             @Override
             public void actionPerformed(ActionEvent e) {
                 double paymentvalue = Double.parseDouble(CalculatorDisplay.getText());
+                ItemDisplay.setText(ItemDisplay.getText() + System.lineSeparator() + "Payment: $" + paymentvalue);
                 paymenttotal[0] = paymenttotal[0] + paymentvalue;
                 PaidDisplay.setText(String.valueOf(paymenttotal[0]));
                 CalculatorDisplay.setText("");
-                AmountDueField.setText(String.valueOf(Double.parseDouble(TotalDisplay.getText())-Double.parseDouble(PaidDisplay.getText())));
+                AmountDue[0] = ordertotal[0] - paymenttotal[0];
+                AmountDueField.setText(String.valueOf(AmountDue[0]));
             }
         });
         logOutButton.addActionListener(new ActionListener() {
@@ -140,7 +143,9 @@ public class Cashier {
         recordSaleButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //Add Sale to Database
+                //Add Sale to Database - Total sale value and payment value
+                ItemDisplay.setText(ItemDisplay.getText() + System.lineSeparator() + "Sale recorded. Total Sold: $"+String.valueOf(ordertotal[0])
+                        + System.lineSeparator() +"Total Payment: $"+String.valueOf(paymenttotal[0])+ System.lineSeparator()+ "Remaining Balance: $"+String.valueOf(AmountDue[0]));
             }
         });
     }

@@ -350,7 +350,7 @@
               </component>
             </children>
           </grid>
-          <component id="46eeb" class="javax.swing.JFormattedTextField" binding="itemListFormattedTextField" default-binding="true">
+          <component id="46eeb" class="javax.swing.JFormattedTextField" binding="newSaleFormattedTextField" default-binding="true">
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
@@ -358,7 +358,7 @@
             </constraints>
             <properties>
               <editable value="false"/>
-              <text value="Item List:"/>
+              <text value="New Sale:"/>
             </properties>
           </component>
           <component id="63f92" class="javax.swing.JButton" binding="recordSaleButton" default-binding="true">
