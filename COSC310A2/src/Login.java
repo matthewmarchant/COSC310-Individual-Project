@@ -9,7 +9,7 @@ public class Login {
     private JButton managerLoginButton;
     private JFormattedTextField usernameFormattedTextField;
     private JFormattedTextField passwordFormattedTextField;
-    JPanel LoginPanel;
+    public JPanel LoginPanel;
     private JTextPane textPane1;
     private JFormattedTextField usernameFormattedTextField1;
 

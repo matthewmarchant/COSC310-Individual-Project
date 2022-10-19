@@ -3,7 +3,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Manager {
-    JPanel ManagerScreen;
+    public JPanel ManagerScreen;
     private JTabbedPane tabbedPane;
     private JTable InventoryTable; // Display Inventory Data from Database
     private JList SalesList;

@@ -4,7 +4,7 @@ import java.awt.event.ActionListener;
 
 public class Cashier {
     private JFormattedTextField cashierFormattedTextField;
-    JPanel CashierScreen;
+    public JPanel CashierScreen;
     private JButton logOutButton;
     DefaultListModel Items;
     private JButton a1Button;
