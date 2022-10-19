@@ -100,7 +100,6 @@ public class Cashier {
         addItemButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                    ErrorDisplay.setText("");
                     double itemcost = Double.parseDouble(CalculatorDisplay.getText());
                     ItemDisplay.setText(ItemDisplay.getText() + System.lineSeparator() + "Item " + i[0] + ": $" + itemcost);
                     i[0]++;
