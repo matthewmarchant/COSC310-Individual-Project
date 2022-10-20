@@ -6,19 +6,8 @@ public class DBConnection{
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             con=DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/310 project","root","now2is41");
+                    "jdbc:mysql://localhost:3306/cosc310database","root","password");
              Statement stmt=con.createStatement();
-             ResultSet rs=stmt.executeQuery("select * from product");
-             System.out.println(rs);
-        }catch(Exception e){
-            System.out.println(e);
-        }
-    }
-    public void test(){
-        try{
-            Statement stmt=con.createStatement();
-            ResultSet rs=stmt.executeQuery("select * from Staff");
-            System.out.println(rs);
         }catch(Exception e){
             System.out.println(e);
         }
@@ -29,21 +18,26 @@ public class DBConnection{
             Statement stmt=con.createStatement();
             ResultSet rs=stmt.executeQuery("SELECT password, manager FROM Staff WHERE username = \"" + user + "\";");
             if(!rs.next()) {
-                System.out.println("invalid username");
-                return false;
+                throw new IllegalArgumentException("invalid username");
             }
-            if(rs.getString("password").equals(pword)) {
-                System.out.println("invalid password");
-                return false;
+            if(!rs.getString("password").equals(pword)) {
+                throw new IllegalArgumentException("invalid password");
             }
-            if(manager = true && rs.getBoolean("manager") == false){
-                System.out.println("Not a manager");
-                return false;
+            if(manager && !rs.getBoolean("manager")){
+                throw new IllegalArgumentException("Not a manager");
             }
             return true;
+        }catch(IllegalArgumentException e){
+            throw e;
         }catch(Exception e){
             System.out.println(e);
             return false;
         }
+    }
+
+    public void close(){
+        try{
+            con.close();
+        }catch(Exception e) {}
     }
 }

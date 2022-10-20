@@ -2,33 +2,42 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d6103e90-2d30-42d0-919b-61369f9ebec8" name="Changes" comment="added DBConnection Class and fixed a couple errors">
-      <change afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/COSC310A2.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/COSC310A2/Cashier.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/COSC310A2/DBConnection.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/COSC310A2/Login.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/COSC310A2/Main.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/COSC310A2/com/intellij/uiDesigner/core/AbstractLayout.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/COSC310A2/com/intellij/uiDesigner/core/DimensionInfo.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/COSC310A2/com/intellij/uiDesigner/core/GridConstraints.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/COSC310A2/com/intellij/uiDesigner/core/GridLayoutManager.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/COSC310A2/com/intellij/uiDesigner/core/HorizontalInfo.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/COSC310A2/com/intellij/uiDesigner/core/LayoutState.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/COSC310A2/com/intellij/uiDesigner/core/Spacer.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/COSC310A2/com/intellij/uiDesigner/core/SupportCode$TextWithMnemonic.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/COSC310A2/com/intellij/uiDesigner/core/SupportCode.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/COSC310A2/com/intellij/uiDesigner/core/Util.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/COSC310A2/com/intellij/uiDesigner/core/VerticalInfo.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DBConnection.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../mysql-connector-j-8.0.31.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Cashier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Cashier.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$10.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$11.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$12.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$13.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$14.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$15.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$16.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$2.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$3.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$4.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$5.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$6.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$7.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$8.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$9.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/COSC310A2/Login$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/COSC310A2/Login$2.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/COSC310A2/ManageEmployees$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/COSC310A2/ManageEmployees$2.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/COSC310A2/ManageEmployees.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/COSC310A2/Manager$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/COSC310A2/Manager$2.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/COSC310A2/Manager$3.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/COSC310A2/Manager.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/COSC310A2/Suppliers$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/COSC310A2/Suppliers$2.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/COSC310A2/Suppliers.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/COSC310A2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/COSC310A2.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COSC310A2/Login.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COSC310A2/Login.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DBConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DBConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Login.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Login.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Login.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Manager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Manager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,17 +63,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -74,6 +83,14 @@
       <option name="presentableId" value="Default" />
       <updated>1666214653818</updated>
     </task>
+    <task id="LOCAL-00001" summary="added DBConnection Class and fixed a couple errors">
+      <created>1666215520146</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1666215520146</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
