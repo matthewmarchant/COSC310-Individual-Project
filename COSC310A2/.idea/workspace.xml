@@ -1,43 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d6103e90-2d30-42d0-919b-61369f9ebec8" name="Changes" comment="added DBConnection Class and fixed a couple errors">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$10.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$11.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$12.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$13.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$14.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$15.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$16.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$2.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$3.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$4.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$5.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$6.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$7.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$8.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$9.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/COSC310A2/Login$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/COSC310A2/Login$2.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/COSC310A2/ManageEmployees$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/COSC310A2/ManageEmployees$2.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/COSC310A2/ManageEmployees.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/COSC310A2/Manager$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/COSC310A2/Manager$2.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/COSC310A2/Manager$3.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/COSC310A2/Manager.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/COSC310A2/Suppliers$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/COSC310A2/Suppliers$2.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/COSC310A2/Suppliers.class" afterDir="false" />
+    <list default="true" id="d6103e90-2d30-42d0-919b-61369f9ebec8" name="Changes" comment="cashier page db integration">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/COSC310A2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/COSC310A2.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$10.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$11.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$11.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$12.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$12.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$13.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$13.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$14.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$14.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$15.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$15.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$16.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$16.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$8.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$9.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COSC310A2/DBConnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COSC310A2/DBConnection.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COSC310A2/Login$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COSC310A2/Login$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/COSC310A2/Login.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COSC310A2/Login.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COSC310A2/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COSC310A2/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Cashier.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Cashier.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Cashier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Cashier.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DBConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DBConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Login.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Login.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Login.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,7 +79,14 @@
       <option name="project" value="LOCAL" />
       <updated>1666215520146</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="login page db integration">
+      <created>1666247159259</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1666247159259</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -106,6 +102,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="added DBConnection Class and fixed a couple errors" />
-    <option name="LAST_COMMIT_MESSAGE" value="added DBConnection Class and fixed a couple errors" />
+    <MESSAGE value="login page db integration" />
+    <MESSAGE value="cashier page db integration" />
+    <option name="LAST_COMMIT_MESSAGE" value="cashier page db integration" />
   </component>
 </project>

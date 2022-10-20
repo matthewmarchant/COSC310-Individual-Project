@@ -1,12 +1,12 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.NumberFormat;
+import java.util.ArrayList;
 
 public class Cashier {
-    private JFormattedTextField cashierFormattedTextField;
     public JPanel CashierScreen;
     private JButton logOutButton;
-    DefaultListModel Items;
     private JButton a1Button;
     private JButton a3Button;
     private JButton a2Button;
@@ -21,23 +21,19 @@ public class Cashier {
     private JButton clearButton;
     private JButton addItemButton;
     private JTextField CalculatorDisplay;
-    private JTextField totalTextField;
     private JTextField TotalDisplay;
-    private JTextField totalPaidTextField;
-    private JTextField PaidDisplay;
-    private JButton addPaymentButton;
-    private JTextPane ItemDisplay;
-    private JFormattedTextField newSaleFormattedTextField;
-    private JFormattedTextField ErrorDisplay;
-    private JTextField AmountDue;
-    private JTextField AmountDueField;
+    private JButton removeItemButton;
     private JButton recordSaleButton;
+    private JLabel messageOutput;
+    private JTextPane ItemDisplay;
+
+    double orderTotal;
+    ArrayList<Integer> currentSale;
 
     public Cashier() {
-        final int[] i = {1};
-        final double[] ordertotal = {0};
-        final double[] paymenttotal = {0};
-        final double[] AmountDue = {0};
+        orderTotal = 0;
+        currentSale = new ArrayList<Integer>();
+        NumberFormat moneyFormat = NumberFormat.getCurrencyInstance();
         a1Button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -101,24 +97,47 @@ public class Cashier {
         addItemButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                    double itemcost = Double.parseDouble(CalculatorDisplay.getText());
-                    ItemDisplay.setText(ItemDisplay.getText() + System.lineSeparator() + "Item " + i[0] + ": $" + itemcost);
-                    i[0]++;
-                    ordertotal[0] = ordertotal[0] + itemcost;
-                    TotalDisplay.setText(String.valueOf(ordertotal[0]));
-                    CalculatorDisplay.setText("");
+                int productId = Integer.parseInt(CalculatorDisplay.getText());
+                DBConnection con = new DBConnection();
+                if(!con.checkProductExists(productId)){
+                    messageOutput.setText("Product ID does not exist");
+                }else if(!con.checkProductInStock(productId)){
+                    messageOutput.setText("Product out of stock");
+                }else {
+                    messageOutput.setText("");
+                    double price = con.getProductPrice(productId);
+                    String name = con.getProductName(productId);
+                    con.changeProductStock(productId, -1);
+                    currentSale.add(productId);
+                    ItemDisplay.setText(ItemDisplay.getText() + name + " $" + price + "\n");
+                    orderTotal += price;
+                    TotalDisplay.setText(moneyFormat.format(orderTotal));
+                }
+                con.close();
+                CalculatorDisplay.setText("");
             }
         });
-        addPaymentButton.addActionListener(new ActionListener() {
+        removeItemButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                double paymentvalue = Double.parseDouble(CalculatorDisplay.getText());
-                ItemDisplay.setText(ItemDisplay.getText() + System.lineSeparator() + "Payment: $" + paymentvalue);
-                paymenttotal[0] = paymenttotal[0] + paymentvalue;
-                PaidDisplay.setText(String.valueOf(paymenttotal[0]));
+                int productId = Integer.parseInt(CalculatorDisplay.getText());
+                DBConnection con = new DBConnection();
+                if(!con.checkProductExists(productId)){
+                    messageOutput.setText("Product ID does not exist");
+                }else if(!currentSale.contains(productId)){
+                    messageOutput.setText("Item is not in current sale");
+                }else{
+                    messageOutput.setText("");
+                    double price = con.getProductPrice(productId);
+                    String name = con.getProductName(productId);
+                    con.changeProductStock(productId, +1);
+                    currentSale.remove(Integer.valueOf(productId));
+                    ItemDisplay.setText(ItemDisplay.getText() + "Removed " + name + " -$" + price + "\n");
+                    orderTotal -= price;
+                    TotalDisplay.setText(moneyFormat.format(orderTotal));
+                }
+                con.close();
                 CalculatorDisplay.setText("");
-                AmountDue[0] = ordertotal[0] - paymenttotal[0];
-                AmountDueField.setText(String.valueOf(AmountDue[0]));
             }
         });
         logOutButton.addActionListener(new ActionListener() {
@@ -143,9 +162,14 @@ public class Cashier {
         recordSaleButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //Add Sale to Database - Total sale value and payment value
-                ItemDisplay.setText(ItemDisplay.getText() + System.lineSeparator() + "Sale recorded. Total Sold: $"+String.valueOf(ordertotal[0])
-                        + System.lineSeparator() +"Total Payment: $"+String.valueOf(paymenttotal[0])+ System.lineSeparator()+ "Remaining Balance: $"+String.valueOf(AmountDue[0]));
+                ItemDisplay.setText(ItemDisplay.getText() + "Sale recorded. Total: $" + moneyFormat.format(orderTotal) + "\n");
+                DBConnection con = new DBConnection();
+                con.recordSale(currentSale);
+                currentSale.clear();
+                orderTotal = 0;
+                TotalDisplay.setText(moneyFormat.format(orderTotal));
+                con.close();
+
             }
         });
     }
