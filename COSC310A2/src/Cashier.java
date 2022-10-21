@@ -17,7 +17,6 @@ public class Cashier {
     private JButton a8Button;
     private JButton a9Button;
     private JButton a0Button;
-    private JButton button11;
     private JButton clearButton;
     private JButton addItemButton;
     private JTextField CalculatorDisplay;
@@ -88,12 +87,6 @@ public class Cashier {
             @Override
             public void actionPerformed(ActionEvent e) {
                 CalculatorDisplay.setText(CalculatorDisplay.getText() + a9Button.getText());
-            }
-        });
-        button11.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                CalculatorDisplay.setText(CalculatorDisplay.getText() + button11.getText());
             }
         });
         addItemButton.addActionListener(new ActionListener() {
