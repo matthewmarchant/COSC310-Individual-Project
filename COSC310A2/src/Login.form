@@ -40,7 +40,7 @@
         <properties/>
         <border type="none"/>
         <children>
-          <component id="382e0" class="javax.swing.JPasswordField" binding="passwordField">
+          <component id="382e0" class="javax.swing.JPasswordField" binding="passwordInput">
             <constraints>
               <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
@@ -62,7 +62,7 @@
               <text value="Password:"/>
             </properties>
           </component>
-          <component id="2a716" class="javax.swing.JFormattedTextField" binding="usernameFormattedTextField" default-binding="true">
+          <component id="2a716" class="javax.swing.JFormattedTextField" binding="userNameInput">
             <constraints>
               <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="10"/>
@@ -135,7 +135,16 @@
         </constraints>
         <properties/>
         <border type="none"/>
-        <children/>
+        <children>
+          <component id="48ce5" class="javax.swing.JLabel" binding="messageOutput">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value=""/>
+            </properties>
+          </component>
+        </children>
       </grid>
       <component id="e7f13" class="javax.swing.JTextPane" binding="textPane1" default-binding="true">
         <constraints>
