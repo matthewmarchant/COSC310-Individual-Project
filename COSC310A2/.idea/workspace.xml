@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d6103e90-2d30-42d0-919b-61369f9ebec8" name="Changes" comment="cashier page db integration">
+    <list default="true" id="d6103e90-2d30-42d0-919b-61369f9ebec8" name="Changes" comment="fix cashier screen. I forgot to remove the buttonhandler for the button I deleted">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/COSC310A2/Login$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COSC310A2/Login$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$15.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$15.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COSC310A2/Cashier.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COSC310A2/Cashier.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Cashier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Cashier.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -72,7 +73,14 @@
       <option name="project" value="LOCAL" />
       <updated>1666304143435</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="fix cashier screen. I forgot to remove the buttonhandler for the button I deleted">
+      <created>1666371230269</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1666371230269</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -90,6 +98,7 @@
     <MESSAGE value="added DBConnection Class and fixed a couple errors" />
     <MESSAGE value="login page db integration" />
     <MESSAGE value="cashier page db integration" />
-    <option name="LAST_COMMIT_MESSAGE" value="cashier page db integration" />
+    <MESSAGE value="fix cashier screen. I forgot to remove the buttonhandler for the button I deleted" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix cashier screen. I forgot to remove the buttonhandler for the button I deleted" />
   </component>
 </project>

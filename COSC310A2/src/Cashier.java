@@ -160,8 +160,7 @@ public class Cashier {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(currentSale.size() == 0) return;
-                if(CalculatorDisplay.getText().equals("")) return;
-                ItemDisplay.setText(ItemDisplay.getText() + "Sale recorded. Total: $" + moneyFormat.format(orderTotal) + "\n");
+                ItemDisplay.setText(ItemDisplay.getText() + "Sale recorded. Total: " + moneyFormat.format(orderTotal) + "\n");
                 DBConnection con = new DBConnection();
                 con.recordSale(currentSale);
                 currentSale.clear();
