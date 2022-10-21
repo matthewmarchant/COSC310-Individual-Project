@@ -8,11 +8,22 @@ public class ManageEmployees {
     private JFormattedTextField ManagerTitle;
     private JButton logOutButton;
     private JButton homeButton;
-    private JButton orderFromSupplierButton;
-    private JButton addSupplierButton;
     private JList EmployeeList;
 
+    private void updateList(){
+        DBConnection con = new DBConnection();
+        String[] usernames = con.getAllEmployees();
+        String[] employees = new String[usernames.length];
+        int i = 0;
+        for(String username : usernames){
+            employees[i++] = username + "        " + con.getEmployeeNameByUsername(username) + "      " + ((con.isEmployeeManagerByUsername(username) ? "*manager*" : ""));
+        }
+        EmployeeList.setListData(employees);
+        con.close();
+    }
+
     public ManageEmployees() {
+        updateList();
         homeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

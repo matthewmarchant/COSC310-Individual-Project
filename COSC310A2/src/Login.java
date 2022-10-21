@@ -36,8 +36,7 @@ public class Login {
             public void actionPerformed(ActionEvent e) {
                 DBConnection con = new DBConnection();
                 try{
-                    if(true){
-                    //if(con.checkLogin(userNameInput.getText(), new String(passwordInput.getPassword()), false)){
+                    if(con.checkLogin(userNameInput.getText(), new String(passwordInput.getPassword()), false)){
                         con.close();
                         Main.frame.setContentPane(new Cashier().CashierScreen);
                         Main.frame.pack();

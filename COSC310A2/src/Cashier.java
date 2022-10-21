@@ -26,7 +26,9 @@ public class Cashier {
     private JButton recordSaleButton;
     private JLabel messageOutput;
     private JTextPane ItemDisplay;
-
+    private JFormattedTextField cashierFormattedTextField;
+    private JTextField totalTextField;
+    private JFormattedTextField newSaleFormattedTextField;
     double orderTotal;
     ArrayList<Integer> currentSale;
 
@@ -97,11 +99,12 @@ public class Cashier {
         addItemButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if(CalculatorDisplay.getText().equals("")) return;
                 int productId = Integer.parseInt(CalculatorDisplay.getText());
                 DBConnection con = new DBConnection();
                 if(!con.checkProductExists(productId)){
                     messageOutput.setText("Product ID does not exist");
-                }else if(!con.checkProductInStock(productId)){
+                }else if(con.getProductStock(productId) < 1){
                     messageOutput.setText("Product out of stock");
                 }else {
                     messageOutput.setText("");
@@ -120,6 +123,7 @@ public class Cashier {
         removeItemButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if(CalculatorDisplay.getText().equals("")) return;
                 int productId = Integer.parseInt(CalculatorDisplay.getText());
                 DBConnection con = new DBConnection();
                 if(!con.checkProductExists(productId)){
@@ -162,6 +166,8 @@ public class Cashier {
         recordSaleButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if(currentSale.size() == 0) return;
+                if(CalculatorDisplay.getText().equals("")) return;
                 ItemDisplay.setText(ItemDisplay.getText() + "Sale recorded. Total: $" + moneyFormat.format(orderTotal) + "\n");
                 DBConnection con = new DBConnection();
                 con.recordSale(currentSale);
