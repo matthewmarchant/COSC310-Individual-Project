@@ -211,11 +211,13 @@ public class Cashier {
         properties.put("mail.smtp.starttls.enable","true");
         properties.put("mail.smtp.host","smtp.office365.com");
         properties.put("mail.smtp.port","587");
+        properties.put("mail.transport.protocol","smtp");
 
         String myAccountEmail = "cosc310group4@outlook.com";
         String password = "Cosc310Password";
 
         Session session = Session.getInstance(properties, new Authenticator() {
+            @Override
             protected PasswordAuthentication getPasswordAuthentication() {
                 return new PasswordAuthentication(myAccountEmail,password);
             }
@@ -224,10 +226,17 @@ public class Cashier {
         try {
             msg.setFrom(new InternetAddress(myAccountEmail));
             msg.setRecipient(Message.RecipientType.TO, new InternetAddress(EMail));
-            msg.setSubject("Your Purchase from Group 4 Shop:");
-            msg.setText("Test");
+            msg.setSubject("Your Purchase from The Group 4 Store:");
+            msg.setText("""
+                    Thank you for your purchase! \s
+                    Here is your receipt:\s
+
+                    Items Purchased:\s
+                    an example item\s
+                    another example item\s
+                    \s
+                    Order Total: $123.45"""); // Replace with actual item list and order total
             Transport.send(msg);
-            System.out.println("sent message to: "+EMail);
         } catch (MessagingException e) {
             e.printStackTrace();
         }
