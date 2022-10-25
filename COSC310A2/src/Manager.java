@@ -31,6 +31,7 @@ public class Manager {
     private JTextField stockTextField;
     private JButton addProductButton;
     private JComboBox supplierDropDown;
+    private JButton newOrderButton;
     private JTextField totalTextField;
 
     private JPanel Sales;
@@ -199,6 +200,13 @@ public class Manager {
                 }catch(Exception error){
                     inventoryMessageOutput.setText("Invalid value");
                 }
+            }
+        });
+        newOrderButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.frame.setContentPane(new Orders().OrderScreen);
+                Main.frame.pack();
             }
         });
     }
