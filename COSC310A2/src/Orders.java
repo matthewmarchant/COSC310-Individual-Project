@@ -104,5 +104,12 @@ public class Orders {
                 }
             }
            });
+        submitOrderButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //Add products to new order and save order in database
+            }
+        });
     }
+
 }

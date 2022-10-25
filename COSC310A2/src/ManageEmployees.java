@@ -9,6 +9,16 @@ public class ManageEmployees {
     private JButton logOutButton;
     private JButton homeButton;
     private JList EmployeeList;
+    private JFormattedTextField AddEmployee;
+    private JButton addEmployeeButton;
+    private JFormattedTextField employeeNameFormattedTextField;
+    private JFormattedTextField nameField;
+    private JFormattedTextField usernameFormattedTextField;
+    private JFormattedTextField usernameField;
+    private JFormattedTextField managerFormattedTextField;
+    private JCheckBox ManagerCheckbox;
+    private JFormattedTextField PasswordTextBox;
+    private JPasswordField PasswordField;
 
     private void updateList(){
         DBConnection con = new DBConnection();
@@ -36,6 +46,16 @@ public class ManageEmployees {
             public void actionPerformed(ActionEvent e) {
                 Main.frame.setContentPane(new Login().LoginPanel);
                 Main.frame.pack();
+            }
+        });
+        addEmployeeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String name = nameField.getText();
+                String username = usernameField.getText();
+                String password = PasswordField.getText();
+                boolean manager = ManagerCheckbox.isValid();
+                // Add new employee to database
             }
         });
     }

@@ -1,8 +1,12 @@
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Properties;
 
 public class Cashier {
     public JPanel CashierScreen;
@@ -28,8 +32,12 @@ public class Cashier {
     private JFormattedTextField cashierFormattedTextField;
     private JTextField totalTextField;
     private JFormattedTextField newSaleFormattedTextField;
+    private JButton addCustomerButton;
+    private JButton eMailReceiptButton;
     double orderTotal;
     ArrayList<Integer> currentSale;
+    static JFrame customercreator = new JFrame("Customer Creator");
+    static JFrame emailer = new JFrame("EMail Confirmation");
 
     public Cashier() {
         orderTotal = 0;
@@ -170,5 +178,59 @@ public class Cashier {
 
             }
         });
+        addCustomerButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                customercreator.setContentPane(new CustomerCreator().CustomerScreen);
+                customercreator.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                customercreator.pack();
+                customercreator.setVisible(true);
+            }
+        });
+
+        eMailReceiptButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String emailto = "matthewmarchant15@gmail.com"; //replace with get current customer email
+                EMail.SetEmail(emailto);
+                emailer.setContentPane(new EMail().ConfirmEmail);
+                emailer.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                emailer.pack();
+                emailer.setVisible(true);
+            }
+        });
+    }
+    public static void CloseCustomerCreator(){
+        customercreator.dispose();
+    }
+    public static void SendEmail(String EMail){
+        emailer.dispose();
+        // get sale information
+        Properties properties = new Properties();
+        properties.put("mail.smtp.auth","true");
+        properties.put("mail.smtp.starttls.enable","true");
+        properties.put("mail.smtp.host","smtp.office365.com");
+        properties.put("mail.smtp.port","587");
+
+        String myAccountEmail = "cosc310group4@outlook.com";
+        String password = "Cosc310Password";
+
+        Session session = Session.getInstance(properties, new Authenticator() {
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(myAccountEmail,password);
+            }
+        });
+        MimeMessage msg = new MimeMessage(session);
+        try {
+            msg.setFrom(new InternetAddress(myAccountEmail));
+            msg.setRecipient(Message.RecipientType.TO, new InternetAddress(EMail));
+            msg.setSubject("Your Purchase from Group 4 Shop:");
+            msg.setText("Test");
+            Transport.send(msg);
+            System.out.println("sent message to: "+EMail);
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
+
     }
 }
