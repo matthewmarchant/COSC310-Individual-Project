@@ -5,10 +5,10 @@ input new orders, view sales stats and stock warnings, etc. The main features th
 the manager or cashier screen, a cashier system that can process sales, and a management system that can add products, view sales, and manage suppliers.
 
 Instructions to compile and run the code: 
-
-
-
-
+To run the system on your device you would need to install the docker application. Next, create a directory called cosc310 database in your sytem
+You now need to compose the created directory in docker using the terminal and the command docker-compose up -d. Once that is done successfully
+you can run the entire system using intelliJ code editor by opening the project file. You will need to add the JAR file provided into the intelliJ 
+source code file for dependency and you will be able to use the system.
 
 
 The whole system is divided into  five main classes which handle a singular core function of the system. The Cashier class handles
