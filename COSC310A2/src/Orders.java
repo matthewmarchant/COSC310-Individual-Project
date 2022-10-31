@@ -99,8 +99,8 @@ public class Orders {
         clearOrderButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                for(int j=0;(model.getRowCount())>j;j++){
-                    model.setValueAt("0",j,4);
+                for(int j=0;(OrderTable.getModel().getRowCount())>j;j++){
+                    OrderTable.getModel().setValueAt("0",j,4);
                 }
             }
            });
