@@ -31,9 +31,13 @@ public class Cashier {
     private JTextPane ItemDisplay;
     private JFormattedTextField cashierFormattedTextField;
     private JTextField totalTextField;
-    private JFormattedTextField newSaleFormattedTextField;
     private JButton addCustomerButton;
     private JButton eMailReceiptButton;
+    private JFormattedTextField customerNameFormattedTextField;
+    private JFormattedTextField SelectedCustomerName;
+    private JFormattedTextField formattedTextField1;
+    private JButton selectCustomerButton;
+    private JFormattedTextField customerIDFormattedTextField;
     double orderTotal;
     ArrayList<Integer> currentSale;
     static JFrame customercreator = new JFrame("Customer Creator");
@@ -182,7 +186,6 @@ public class Cashier {
             @Override
             public void actionPerformed(ActionEvent e) {
                 customercreator.setContentPane(new CustomerCreator().CustomerScreen);
-                customercreator.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 customercreator.pack();
                 customercreator.setVisible(true);
             }
@@ -194,7 +197,6 @@ public class Cashier {
                 String emailto = "matthewmarchant15@gmail.com"; //replace with get current customer email
                 EMail.SetEmail(emailto);
                 emailer.setContentPane(new EMail().ConfirmEmail);
-                emailer.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 emailer.pack();
                 emailer.setVisible(true);
             }
