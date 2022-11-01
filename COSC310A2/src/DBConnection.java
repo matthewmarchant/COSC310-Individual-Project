@@ -436,6 +436,38 @@ public class DBConnection{
         }
     }
 
+    public int addNewCustomer(String firstName, String lastName, String phoneNumber, String email){
+        try {
+            Statement stmt = con.createStatement();
+            stmt.executeUpdate("INSERT INTO Customer VALUES (Null, \"" + firstName +"\", \"" + lastName + "\", \"" + email + "\", \"" + phoneNumber + "\");");
+            ResultSet rs=stmt.executeQuery("SELECT LAST_INSERT_ID();");
+            rs.next();
+            int customerId = rs.getInt(1);
+            return customerId;
+        }catch(Exception e){
+            System.out.println(e);
+        }
+        return -999;
+    }
+
+    public String getCustomerNameById(int id){
+        try{
+            Statement stmt=con.createStatement();
+            ResultSet rs=stmt.executeQuery("SELECT first_name, last_name FROM Customer WHERE id = " + id + ";");
+            if(!rs.next()) {
+                rs.close();
+                stmt.close();
+                return null;
+            }
+            String out = rs.getString("first_name") + " " + rs.getString("last_name");
+            rs.close();
+            stmt.close();
+            return out;
+        }catch(Exception e){
+            System.out.println(e);
+            return null;
+        }
+    }
     public void close(){
         try{
             con.close();

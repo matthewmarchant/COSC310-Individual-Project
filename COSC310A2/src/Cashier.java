@@ -33,15 +33,17 @@ public class Cashier {
     private JTextField totalTextField;
     private JButton addCustomerButton;
     private JButton eMailReceiptButton;
-    private JFormattedTextField customerNameFormattedTextField;
+    private JLabel customerNameLabel;
     private JFormattedTextField SelectedCustomerName;
-    private JFormattedTextField formattedTextField1;
+    private JFormattedTextField customerIdTextInput;
     private JButton selectCustomerButton;
     private JFormattedTextField customerIDFormattedTextField;
     double orderTotal;
     ArrayList<Integer> currentSale;
-    static JFrame customercreator = new JFrame("Customer Creator");
+    JFrame customercreator = new JFrame("Customer Creator");
     static JFrame emailer = new JFrame("EMail Confirmation");
+
+    int selectedCustomer = -999;
 
     public Cashier() {
         orderTotal = 0;
@@ -182,10 +184,24 @@ public class Cashier {
 
             }
         });
+
+        selectCustomerButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String id = customerIdTextInput.getText();
+                if(!id.matches("^[1-9]\\d*$")){
+                    messageOutput.setText("invalid customer ID");
+                    SelectedCustomerName.setText("");
+                    selectedCustomer = -999;
+                    return;
+                }
+                setCurrentCustomer(Integer.parseInt(id));
+            }
+        });
         addCustomerButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                customercreator.setContentPane(new CustomerCreator().CustomerScreen);
+                customercreator.setContentPane(new CustomerCreator(Cashier.this).CustomerScreen);
                 customercreator.pack();
                 customercreator.setVisible(true);
             }
@@ -202,8 +218,22 @@ public class Cashier {
             }
         });
     }
-    public static void CloseCustomerCreator(){
+    public void CloseCustomerCreator(){
         customercreator.dispose();
+    }
+
+    public void setCurrentCustomer(int id){
+        DBConnection con = new DBConnection();
+        selectedCustomer = id;
+        String name = con.getCustomerNameById(selectedCustomer);
+        SelectedCustomerName.setText(name);
+        con.close();
+        if(name == null){
+            selectedCustomer = -999;
+            messageOutput.setText("invalid customer ID");
+            return;
+        }
+        messageOutput.setText("");
     }
     public static void SendEmail(String EMail){
         emailer.dispose();

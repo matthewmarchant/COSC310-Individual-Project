@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d6103e90-2d30-42d0-919b-61369f9ebec8" name="Changes" comment="fix cashier screen. I forgot to remove the buttonhandler for the button I deleted">
+    <list default="true" id="d6103e90-2d30-42d0-919b-61369f9ebec8" name="Changes" comment="Added ability to add new employees">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$10.class" afterDir="false" />
@@ -20,18 +20,13 @@
       <change beforePath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$9.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/COSC310A2/Cashier.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COSC310A2/Cashier.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/COSC310A2/DBConnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COSC310A2/DBConnection.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/COSC310A2/Login$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COSC310A2/Login$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/COSC310A2/ManageEmployees$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COSC310A2/ManageEmployees$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/COSC310A2/ManageEmployees$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COSC310A2/ManageEmployees$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/COSC310A2/ManageEmployees.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COSC310A2/ManageEmployees.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/COSC310A2/Manager$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COSC310A2/Manager$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/COSC310A2/Manager$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COSC310A2/Manager$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/COSC310A2/Manager$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COSC310A2/Manager$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/COSC310A2/Manager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COSC310A2/Manager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/COSC310A2/Login$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COSC310A2/Login$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Cashier.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Cashier.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Cashier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Cashier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CustomerCreator.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/CustomerCreator.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CustomerCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CustomerCreator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DBConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DBConnection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Login.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ManageEmployees.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/ManageEmployees.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ManageEmployees.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ManageEmployees.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,7 +102,14 @@
       <option name="project" value="LOCAL" />
       <updated>1666371230269</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Added ability to add new employees">
+      <created>1667263220901</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1667263220901</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -126,6 +128,7 @@
     <MESSAGE value="login page db integration" />
     <MESSAGE value="cashier page db integration" />
     <MESSAGE value="fix cashier screen. I forgot to remove the buttonhandler for the button I deleted" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix cashier screen. I forgot to remove the buttonhandler for the button I deleted" />
+    <MESSAGE value="Added ability to add new employees" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added ability to add new employees" />
   </component>
 </project>
