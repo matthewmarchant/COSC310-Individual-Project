@@ -104,6 +104,15 @@ public class DBConnection{
         }
     }
 
+    public void addEmployee(String firstName, String lastName, String userName, String password, boolean manager){
+        try {
+            Statement stmt = con.createStatement();
+            stmt.executeUpdate("INSERT INTO Staff VALUES (\"" + firstName + "\", \"" + lastName + "\", \"" + userName + "\", \"" + password + "\", " + manager + ");");
+        }catch(Exception e){
+            System.out.println(e);
+        }
+    }
+
     public boolean checkProductExists(int id){
         try{
             Statement stmt=con.createStatement();
