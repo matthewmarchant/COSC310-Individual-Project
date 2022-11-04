@@ -42,8 +42,9 @@ public class Cashier {
     ArrayList<Integer> currentSale;
     JFrame customercreator = new JFrame("Customer Creator");
     static JFrame emailer = new JFrame("EMail Confirmation");
-
     int selectedCustomer = -999;
+    boolean saleCompleted = false;
+    int lastPurchaseId = -999;
 
     public Cashier() {
         orderTotal = 0;
@@ -106,6 +107,11 @@ public class Cashier {
         addItemButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if(saleCompleted){
+                    saleCompleted = false;
+                    setCurrentCustomer(-999);
+                    eMailReceiptButton.setEnabled(false);
+                }
                 if(CalculatorDisplay.getText().equals("")) return;
                 int productId = Integer.parseInt(CalculatorDisplay.getText());
                 DBConnection con = new DBConnection();
@@ -175,13 +181,14 @@ public class Cashier {
             public void actionPerformed(ActionEvent e) {
                 if(currentSale.size() == 0) return;
                 ItemDisplay.setText(ItemDisplay.getText() + "Sale recorded. Total: " + moneyFormat.format(orderTotal) + "\n");
+                saleCompleted = true;
+                eMailReceiptButton.setEnabled(true);
                 DBConnection con = new DBConnection();
-                con.recordSale(currentSale);
+                lastPurchaseId = con.recordSale(currentSale, selectedCustomer);
                 currentSale.clear();
                 orderTotal = 0;
                 TotalDisplay.setText(moneyFormat.format(orderTotal));
                 con.close();
-
             }
         });
 
@@ -210,11 +217,15 @@ public class Cashier {
         eMailReceiptButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String emailto = "matthewmarchant15@gmail.com"; //replace with get current customer email
+                DBConnection con = new DBConnection();
+                String emailto = con.getCustomerEmailById(selectedCustomer);
                 EMail.SetEmail(emailto);
-                emailer.setContentPane(new EMail().ConfirmEmail);
+                emailer.setContentPane(new EMail(Cashier.this).ConfirmEmail);
                 emailer.pack();
                 emailer.setVisible(true);
+                saleCompleted = false;
+                setCurrentCustomer(-999);
+                eMailReceiptButton.setEnabled(false);
             }
         });
     }
@@ -223,6 +234,13 @@ public class Cashier {
     }
 
     public void setCurrentCustomer(int id){
+        if(id == -999){
+            selectedCustomer = -999;
+            messageOutput.setText("");
+            customerIdTextInput.setText("");
+            SelectedCustomerName.setText("");
+            return;
+        }
         DBConnection con = new DBConnection();
         selectedCustomer = id;
         String name = con.getCustomerNameById(selectedCustomer);
@@ -235,7 +253,7 @@ public class Cashier {
         }
         messageOutput.setText("");
     }
-    public static void SendEmail(String EMail){
+    public void SendEmail(String EMail){
         emailer.dispose();
         // get sale information
         Properties properties = new Properties();
@@ -259,15 +277,8 @@ public class Cashier {
             msg.setFrom(new InternetAddress(myAccountEmail));
             msg.setRecipient(Message.RecipientType.TO, new InternetAddress(EMail));
             msg.setSubject("Your Purchase from The Group 4 Store:");
-            msg.setText("""
-                    Thank you for your purchase! \s
-                    Here is your receipt:\s
-
-                    Items Purchased:\s
-                    an example item\s
-                    another example item\s
-                    \s
-                    Order Total: $123.45"""); // Replace with actual item list and order total
+            DBConnection con = new DBConnection();
+            msg.setText("Thank you for your purchase!\nHere is your receipt:\n" + con.getSaleInfoById(lastPurchaseId) + "\n\n" + con.getSaleItemsById(lastPurchaseId));
             Transport.send(msg);
         } catch (MessagingException e) {
             e.printStackTrace();

@@ -9,12 +9,12 @@ public class EMail {
     static String Email;
     JPanel ConfirmEmail;
 
-    public EMail() {
+    public EMail(Cashier parent) {
         EMailTo.setText(Email);
         sendEMailButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Cashier.SendEmail(Email);
+                parent.SendEmail(Email);
             }
         });
     }

@@ -290,11 +290,11 @@ public class DBConnection{
         }
     }
 
-    public void recordSale(ArrayList<Integer> productIds)
+    public int recordSale(ArrayList<Integer> productIds, int custId)
     {
         try{
             Statement stmt=con.createStatement();
-            stmt.executeUpdate("INSERT INTO Purchase VALUES (Null, CURDATE(), Null);");
+            stmt.executeUpdate("INSERT INTO Purchase VALUES (Null, CURDATE(), " + custId + ");");
             ResultSet rs=stmt.executeQuery("SELECT LAST_INSERT_ID();");
             rs.next();
             int purchaseId = rs.getInt(1);
@@ -306,8 +306,10 @@ public class DBConnection{
             }
             rs.close();
             stmt.close();
+            return purchaseId;
         }catch(Exception e){
             System.out.println(e);
+            return -999;
         }
     }
 
@@ -460,6 +462,25 @@ public class DBConnection{
                 return null;
             }
             String out = rs.getString("first_name") + " " + rs.getString("last_name");
+            rs.close();
+            stmt.close();
+            return out;
+        }catch(Exception e){
+            System.out.println(e);
+            return null;
+        }
+    }
+
+    public String getCustomerEmailById(int id){
+        try{
+            Statement stmt=con.createStatement();
+            ResultSet rs=stmt.executeQuery("SELECT email FROM Customer WHERE id = " + id + ";");
+            if(!rs.next()) {
+                rs.close();
+                stmt.close();
+                return null;
+            }
+            String out = rs.getString("email");
             rs.close();
             stmt.close();
             return out;
