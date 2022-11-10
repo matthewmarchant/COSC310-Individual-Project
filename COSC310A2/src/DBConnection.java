@@ -489,6 +489,28 @@ public class DBConnection{
             return null;
         }
     }
+
+    public void addOrder(int[] productIds, int[] productAmounts, int supplierId)
+    {
+        try{
+            Statement stmt=con.createStatement();
+            stmt.executeUpdate("INSERT INTO ProductOrder VALUES (Null, CURDATE(), " + supplierId + ");");
+            ResultSet rs=stmt.executeQuery("SELECT LAST_INSERT_ID();");
+            rs.next();
+            int orderId = rs.getInt(1);
+            for(int i = 0; i < productIds.length; i++){
+                int amount = productAmounts[i];
+                if(amount > 0) {
+                    int productId = productIds[i];
+                    stmt.executeUpdate("INSERT INTO OrderedProduct VALUES (" + orderId + ", " + productId + ", " + amount + ");");
+                }
+            }
+            rs.close();
+            stmt.close();
+        }catch(Exception e){
+            System.out.println(e);
+        }
+    }
     public void close(){
         try{
             con.close();
