@@ -511,6 +511,67 @@ public class DBConnection{
             System.out.println(e);
         }
     }
+
+    public int[] getAllOrderIds(){
+        try{
+            Statement stmt=con.createStatement();
+            ResultSet rs=stmt.executeQuery("SELECT id FROM ProductOrder");
+            ArrayList<Integer> ids = new ArrayList<Integer>();
+            while(rs.next()){
+                ids.add(rs.getInt(1));
+            }
+            int[] idsArr = new int[ids.size()];
+            int i = 0;
+            for(int id : ids){
+                idsArr[i++] = id;
+            }
+            rs.close();
+            stmt.close();
+            return idsArr;
+        }catch(Exception e){
+            System.out.println(e);
+            return new int[]{};
+        }
+    }
+
+    public String getOrderInfoById(int id) {
+        try {
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT order_date, SUM(amount * price)\n" +
+                    "FROM ProductOrder as PO, OrderedProduct as OP, Product as Pr\n" +
+                    "WHERE PO.id = OP.order_id AND OP.product_id = Pr.id AND PO.id = " + id + "\n" +
+                    "GROUP BY PO.id\n" +
+                    "ORDER BY order_date DESC;");
+            rs.next();
+            String out = rs.getString(1) + "   $" + rs.getString(2);
+            rs.close();
+            stmt.close();
+            return out;
+        } catch (Exception e) {
+            System.out.println(e);
+            return "";
+        }
+    }
+
+    public String getOrderItemsById(int id){
+        try{
+            Statement stmt=con.createStatement();
+            ResultSet rs=stmt.executeQuery("SELECT product_name, amount, (price * amount)\n" +
+                    "FROM OrderedProduct AS OP, Product AS P\n" +
+                    "WHERE OP.product_id = P.id AND order_id = " + id + ";");
+            String out = "";
+            while(rs.next()){
+                out += out = rs.getString(1) + " x" + rs.getString(2) + "  $" + rs.getString(3) + "\n";
+            }
+            rs.close();
+            stmt.close();
+            return out;
+        }catch(Exception e){
+            System.out.println(e);
+            return "";
+        }
+    }
+
     public void close(){
         try{
             con.close();

@@ -1,27 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d6103e90-2d30-42d0-919b-61369f9ebec8" name="Changes" comment="Implemented email recepts to selected customer">
+    <list default="true" id="d6103e90-2d30-42d0-919b-61369f9ebec8" name="Changes" comment="Implemented adding new orders">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$10.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$11.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$11.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$12.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$12.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$13.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$13.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$14.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$14.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$15.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$15.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$7.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$8.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COSC310A2/Cashier$9.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/COSC310A2/Cashier.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COSC310A2/Cashier.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/COSC310A2/DBConnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/COSC310A2/DBConnection.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DBConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DBConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Orders.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Orders.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Manager.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Manager.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Manager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Manager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,7 +103,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667545619542</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Implemented adding new orders">
+      <created>1668102341877</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1668102341877</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -140,6 +132,7 @@
     <MESSAGE value="Added ability to add new employees" />
     <MESSAGE value="Added functionality for adding new customers and selecting existing customers" />
     <MESSAGE value="Implemented email recepts to selected customer" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented email recepts to selected customer" />
+    <MESSAGE value="Implemented adding new orders" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented adding new orders" />
   </component>
 </project>

@@ -368,7 +368,7 @@
                             <properties/>
                             <border type="none"/>
                             <children>
-                              <component id="d7c68" class="javax.swing.JList">
+                              <component id="d7c68" class="javax.swing.JList" binding="Orders">
                                 <constraints/>
                                 <properties>
                                   <model/>
@@ -395,9 +395,11 @@
                             <properties/>
                             <border type="none"/>
                             <children>
-                              <component id="3f325" class="javax.swing.JTextPane">
+                              <component id="3f325" class="javax.swing.JTextPane" binding="OrderDetails">
                                 <constraints/>
-                                <properties/>
+                                <properties>
+                                  <editable value="false"/>
+                                </properties>
                               </component>
                             </children>
                           </scrollpane>

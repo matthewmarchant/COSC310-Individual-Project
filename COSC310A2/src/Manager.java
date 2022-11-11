@@ -32,6 +32,8 @@ public class Manager {
     private JButton addProductButton;
     private JComboBox supplierDropDown;
     private JButton newOrderButton;
+    private JTextPane OrderDetails;
+    private JList Orders;
     private JTextField totalTextField;
 
     private JPanel Sales;
@@ -101,6 +103,18 @@ public class Manager {
         WarningsList.setListData(warnings);
         con.close();
     }
+
+    private void updateOrders(){
+        DBConnection con = new DBConnection();
+        OrderDetails.setText("");
+        int[] orders = con.getAllOrderIds();
+        String[] ordersInfo = new String[orders.length];
+        int i = 0;
+        for(int id : orders){
+            ordersInfo[i++] = "Sale #" + id + ":  " + con.getOrderInfoById(id);
+        }
+        Orders.setListData(ordersInfo);
+    }
     public Manager() {
         moneyFormat = NumberFormat.getCurrencyInstance();
         updateSales();
@@ -112,6 +126,7 @@ public class Manager {
                     case 0: updateSales();
                     case 1: updateInventory();
                     case 2: updateWarnings();
+                    case 3: updateOrders();
                 }
             }
         });
@@ -135,6 +150,21 @@ public class Manager {
                 DBConnection con = new DBConnection();
                 String items = con.getSaleItemsById(purchaseId);
                 SaleDetails.setText(items);
+                con.close();
+            }
+        });
+
+        Orders.addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                if (e.getValueIsAdjusting()) return;
+                JList source = (JList)e.getSource();
+                if(source.isSelectionEmpty()) return;
+                String selected = source.getSelectedValue().toString();
+                int orderId = Integer.parseInt(selected.substring(selected.indexOf('#') + 1, selected.indexOf(':')));
+                DBConnection con = new DBConnection();
+                String items = con.getOrderItemsById(orderId);
+                OrderDetails.setText(items);
                 con.close();
             }
         });
