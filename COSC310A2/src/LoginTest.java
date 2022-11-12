@@ -7,7 +7,7 @@ public class LoginTest extends DBConnection {
     @Test
     public void getEmployeeNameByUsernameTest() {
         String user = getEmployeeNameByUsername("bbrown");
-        assertEquals("Bob",user);
+        assertEquals("Bob Brown",user);
     }
 
     @Test
