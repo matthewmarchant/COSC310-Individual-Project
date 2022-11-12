@@ -111,7 +111,7 @@ public class Manager {
         String[] ordersInfo = new String[orders.length];
         int i = 0;
         for(int id : orders){
-            ordersInfo[i++] = "Sale #" + id + ":  " + con.getOrderInfoById(id);
+            ordersInfo[i++] = "Order #" + id + ":  " + con.getOrderInfoById(id);
         }
         Orders.setListData(ordersInfo);
     }
