@@ -20,7 +20,7 @@ public class Login {
             public void actionPerformed(ActionEvent e) {
                 DBConnection con = new DBConnection();
                 try{
-                    if(true){//con.checkLogin(userNameInput.getText(), new String(passwordInput.getPassword()), true)){
+                    if(con.checkLogin(userNameInput.getText(), new String(passwordInput.getPassword()), true)){
                         con.close();
                         Main.frame.setContentPane(new Manager().ManagerScreen);
                         Main.frame.pack();
@@ -36,7 +36,7 @@ public class Login {
             public void actionPerformed(ActionEvent e) {
                 DBConnection con = new DBConnection();
                 try{
-                    if(true){//con.checkLogin(userNameInput.getText(), new String(passwordInput.getPassword()), false)){
+                    if(con.checkLogin(userNameInput.getText(), new String(passwordInput.getPassword()), false)){
                         con.close();
                         Main.frame.setContentPane(new Cashier().CashierScreen);
                         Main.frame.pack();
