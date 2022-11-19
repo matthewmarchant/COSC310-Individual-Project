@@ -1,9 +1,24 @@
+
+
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.twilio.Twilio;
+import org.junit.jupiter.api.Test;
+import com.twilio.type.PhoneNumber;
+
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Properties;
@@ -38,13 +53,20 @@ public class Cashier {
     private JFormattedTextField customerIdTextInput;
     private JButton selectCustomerButton;
     private JFormattedTextField customerIDFormattedTextField;
+    private JButton textReceiptButton;
+    private JComboBox CurrencySelector;
+    private JFormattedTextField SelectCurrency;
     double orderTotal;
     ArrayList<Integer> currentSale;
+    static String Currency;
     JFrame customercreator = new JFrame("Customer Creator");
     static JFrame emailer = new JFrame("EMail Confirmation");
+    static JFrame texter = new JFrame("Text Confirmation");
     int selectedCustomer = -999;
     boolean saleCompleted = false;
     int lastPurchaseId = -999;
+    public static final String ACCOUNT_SID = "AC11e10c94dcbd45e23305be33f1627825";
+    public static final String AUTH_TOKEN = "b0f8db9a77edb2da3ff078ee613230b0";
 
     public Cashier() {
         orderTotal = 0;
@@ -111,6 +133,7 @@ public class Cashier {
                     saleCompleted = false;
                     setCurrentCustomer(-999);
                     eMailReceiptButton.setEnabled(false);
+                    textReceiptButton.setEnabled(false);
                 }
                 if(CalculatorDisplay.getText().equals("")) return;
                 int productId = Integer.parseInt(CalculatorDisplay.getText());
@@ -122,10 +145,21 @@ public class Cashier {
                 }else {
                     messageOutput.setText("");
                     double price = con.getProductPrice(productId);
+                    Currency = String.valueOf(CurrencySelector.getSelectedItem());
                     String name = con.getProductName(productId);
                     con.changeProductStock(productId, -1);
                     currentSale.add(productId);
-                    ItemDisplay.setText(ItemDisplay.getText() + name + " $" + price + "\n");
+                    if(Currency == "CAD"){
+                        ItemDisplay.setText(ItemDisplay.getText() + name + " $" + price + "\n");}
+                    else{
+                        double ConvertedPrice = 0;
+                        try {
+                            ConvertedPrice = CurrencyConverter(price,Currency);
+                        } catch (IOException ex) {
+                            ex.printStackTrace();
+                        }
+                        ItemDisplay.setText(ItemDisplay.getText() + name + " $" + price + " ---> "+ moneyFormat.format(ConvertedPrice) + " " + Currency + "\n");
+                    }
                     orderTotal += price;
                     TotalDisplay.setText(moneyFormat.format(orderTotal));
                 }
@@ -181,8 +215,16 @@ public class Cashier {
             public void actionPerformed(ActionEvent e) {
                 if(currentSale.size() == 0) return;
                 ItemDisplay.setText(ItemDisplay.getText() + "Sale recorded. Total: " + moneyFormat.format(orderTotal) + "\n");
+                if(Currency!="CAD"){
+                    try {
+                        ItemDisplay.setText(ItemDisplay.getText()+"Converted: Total: "+moneyFormat.format(CurrencyConverter(orderTotal,Currency))+" "+Currency+"\n");
+                    } catch (IOException ex) {
+                        System.out.println(e);
+                    }
+                }
                 saleCompleted = true;
                 eMailReceiptButton.setEnabled(true);
+                textReceiptButton.setEnabled(true);
                 DBConnection con = new DBConnection();
                 lastPurchaseId = con.recordSale(currentSale, selectedCustomer);
                 currentSale.clear();
@@ -226,6 +268,22 @@ public class Cashier {
                 saleCompleted = false;
                 setCurrentCustomer(-999);
                 eMailReceiptButton.setEnabled(false);
+                textReceiptButton.setEnabled(false);
+            }
+        });
+        textReceiptButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                DBConnection con = new DBConnection();
+                String TextTo = con.getCustomerPhoneById(selectedCustomer);
+                Text.SetPhone(TextTo);
+                texter.setContentPane(new Text(Cashier.this).ConfirmText);
+                texter.pack();
+                texter.setVisible(true);
+                saleCompleted = false;
+                setCurrentCustomer(-999);
+                textReceiptButton.setEnabled(false);
+                eMailReceiptButton.setEnabled(false);
             }
         });
     }
@@ -255,7 +313,6 @@ public class Cashier {
     }
     public void SendEmail(String EMail){
         emailer.dispose();
-        // get sale information
         Properties properties = new Properties();
         properties.put("mail.smtp.auth","true");
         properties.put("mail.smtp.starttls.enable","true");
@@ -278,11 +335,39 @@ public class Cashier {
             msg.setRecipient(Message.RecipientType.TO, new InternetAddress(EMail));
             msg.setSubject("Your Purchase from The Group 4 Store:");
             DBConnection con = new DBConnection();
-            msg.setText("Thank you for your purchase!\nHere is your receipt:\n" + con.getSaleInfoById(lastPurchaseId) + "\n\n" + con.getSaleItemsById(lastPurchaseId));
+            msg.setText(":"+"\n\nThank you for your purchase!\nHere is your receipt:\n" + con.getSaleInfoById(lastPurchaseId) + "\n\n" + con.getSaleItemsById(lastPurchaseId));
             Transport.send(msg);
         } catch (MessagingException e) {
             e.printStackTrace();
         }
 
+    }
+    public void SendText(String phone){
+        texter.dispose();
+        Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
+        String FormattedPhone = "+1"+phone;
+        DBConnection con = new DBConnection();
+        com.twilio.rest.api.v2010.account.Message message = com.twilio.rest.api.v2010.account.Message.creator(new PhoneNumber(FormattedPhone),
+                new PhoneNumber("+14058701265"),
+                "Thank you for your purchase!\nHere is your receipt:\n" + con.getSaleInfoById(lastPurchaseId) + "\n\n" + con.getSaleItemsById(lastPurchaseId)).create();
+        System.out.println("Successfully sent. ID:"+message.getSid());
+    }
+
+    public double CurrencyConverter(double price,String Currency) throws IOException {
+        // Setup
+        String url_str = "https://v6.exchangerate-api.com/v6/1ba94872fcabbb2998a1310c/latest/CAD";
+        URL url = new URL(url_str);
+        HttpURLConnection request = (HttpURLConnection) url.openConnection();
+        request.connect();
+        JsonParser jp = new JsonParser();
+        JsonElement root = jp.parse(new InputStreamReader((InputStream) request.getContent()));
+        JsonObject jsonobj = root.getAsJsonObject();
+        //Get All Current Exchange Rates
+        JsonObject conversions = jsonobj.get("conversion_rates").getAsJsonObject();
+        //Get desired exchange rate
+        double conversion = conversions.get(Currency).getAsDouble();
+        //Convert price to correct currency
+        double ConvertedCurrency = price*conversion;
+        return ConvertedCurrency;
     }
 }

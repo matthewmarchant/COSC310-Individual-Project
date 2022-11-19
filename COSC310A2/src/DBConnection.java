@@ -471,6 +471,25 @@ public class DBConnection{
         }
     }
 
+    public String getCustomerPhoneById(int id){
+        try{
+            Statement stmt=con.createStatement();
+            ResultSet rs=stmt.executeQuery("SELECT phone FROM Customer WHERE id = "+ id +";");
+            if(!rs.next()){
+                rs.close();
+                stmt.close();
+                return null;
+            }
+            String out = rs.getString("phone");
+            rs.close();
+            stmt.close();
+            return out;
+        } catch (Exception e) {
+            System.out.println(e);
+            return null;
+        }
+    }
+
     public String getCustomerEmailById(int id){
         try{
             Statement stmt=con.createStatement();
