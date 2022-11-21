@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -65,13 +66,27 @@ public class Cashier {
     int selectedCustomer = -999;
     boolean saleCompleted = false;
     int lastPurchaseId = -999;
+    JsonObject conversions;
     public static final String ACCOUNT_SID = "AC11e10c94dcbd45e23305be33f1627825";
     public static final String AUTH_TOKEN = "b0f8db9a77edb2da3ff078ee613230b0";
 
-    public Cashier() {
+    public Cashier() throws IOException {
         orderTotal = 0;
         currentSale = new ArrayList<Integer>();
         NumberFormat moneyFormat = NumberFormat.getCurrencyInstance();
+
+        // Curreny Conversion Setup
+        String url_str = "https://v6.exchangerate-api.com/v6/1ba94872fcabbb2998a1310c/latest/CAD";
+        URL url = new URL(url_str);
+        HttpURLConnection request = (HttpURLConnection) url.openConnection();
+        request.connect();
+        JsonParser jp = new JsonParser();
+        JsonElement root = jp.parse(new InputStreamReader((InputStream) request.getContent()));
+        JsonObject jsonobj = root.getAsJsonObject();
+        //Get All Current Exchange Rates
+        conversions = jsonobj.get("conversion_rates").getAsJsonObject();
+
+
         a1Button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -354,16 +369,6 @@ public class Cashier {
     }
 
     public double CurrencyConverter(double price,String Currency) throws IOException {
-        // Setup
-        String url_str = "https://v6.exchangerate-api.com/v6/1ba94872fcabbb2998a1310c/latest/CAD";
-        URL url = new URL(url_str);
-        HttpURLConnection request = (HttpURLConnection) url.openConnection();
-        request.connect();
-        JsonParser jp = new JsonParser();
-        JsonElement root = jp.parse(new InputStreamReader((InputStream) request.getContent()));
-        JsonObject jsonobj = root.getAsJsonObject();
-        //Get All Current Exchange Rates
-        JsonObject conversions = jsonobj.get("conversion_rates").getAsJsonObject();
         //Get desired exchange rate
         double conversion = conversions.get(Currency).getAsDouble();
         //Convert price to correct currency

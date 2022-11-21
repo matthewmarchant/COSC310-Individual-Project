@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 public class Login {
     private JPasswordField passwordInput;
@@ -44,6 +45,8 @@ public class Login {
                 }catch(IllegalArgumentException invalid){
                     con.close();
                     messageOutput.setText(invalid.getMessage());
+                } catch (IOException ex) {
+                    System.out.println(e);
                 }
             }
         });
